@@ -8,5 +8,5 @@ app.get('/', function(req, res){
     res.sendFile(path.join((__dirname  + '/public')));
 });
 
-app.listen(8000);
+app.listen(process.env.PORT || 5000);
 console.log('8000 is the magic port');
