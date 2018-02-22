@@ -6,7 +6,7 @@
 a,
 a:focus,
 a:hover {
-  color: #fff;
+  color: white;
 }
 
 /* Custom default button */
@@ -33,6 +33,7 @@ body {
   color: #fff;
   text-align: center;
   text-shadow: 0 1px 3px rgba(0,0,0,.5);
+    background-color: white;
 }
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */
@@ -40,7 +41,7 @@ body {
   display: table;
   width: 100%;
   height: 600px;
-  background-image: url(../images/cover.jpg);
+  background-image: url(https://images.pexels.com/photos/349610/pexels-photo-349610.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb);
   background-repeat:no-repeat;
   background-size:100% 100%;
   /*height: 100%; */
@@ -51,8 +52,8 @@ body {
   vertical-align: top;
 }
 .cover-container {
-  margin-right: auto;
-  margin-left: auto;
+  margin-right: auto 0;
+  margin-left: auto 0;
 }
 
 /* Padding for spacing */
@@ -60,59 +61,15 @@ body {
   padding: 30px;
 }
 
-
-/*
- * Header
- */
-.masthead-brand {
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-.masthead-nav > li {
-  display: inline-block;
-}
-.masthead-nav > li + li {
-  margin-left: 20px;
-}
-.masthead-nav > li > a {
-  padding-right: 0;
-  padding-left: 0;
-  font-size: 16px;
-  font-weight: bold;
-  color: #fff; /* IE8 proofing */
-  color: rgba(255,255,255,.75);
-  border-bottom: 2px solid transparent;
-}
-.masthead-nav > li > a:hover,
-.masthead-nav > li > a:focus {
-  background-color: transparent;
-  border-bottom-color: #a9a9a9;
-  border-bottom-color: rgba(255,255,255,.25);
-}
-.masthead-nav > .active > a,
-.masthead-nav > .active > a:hover,
-.masthead-nav > .active > a:focus {
-  color: #fff;
-  border-bottom-color: #fff;
-}
-
-@media (min-width: 768px) {
-  .masthead-brand {
-    float: left;
-  }
-  .masthead-nav {
-    float: right;
-  }
-}
-
-
 /*
  * Cover
  */
 
 .cover {
-  padding: 0 20px;
+  padding: auto 0;
+  margin-top: 54px;
+  font-family: 'Quicksand', sans-serif;
+  color: #6b433d;
 }
 .cover .btn-lg {
   padding: 10px 20px;
@@ -132,6 +89,24 @@ body {
   /* Start the vertical centering */
   .site-wrapper-inner {
     vertical-align: middle;
+    margin: auto 0;
+    padding: auto 0;
   }
 
+}
+
+#login{
+    color: white;
+    margin-left: 25px;
+    margin-right: 25px;
+    cursor: pointer;
+}
+.fa-sign-in-alt{
+    color: white;
+    margin-left: 25px;
+    margin-right: 25px;
+    cursor: pointer;
+}
+.navbar{
+    background-color: #162742;
 }
