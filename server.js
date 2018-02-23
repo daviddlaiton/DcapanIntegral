@@ -9,4 +9,4 @@ app.get('/', function(req, res){
 });
 
 app.listen(process.env.PORT || 5000);
-console.log('8000 is the magic port');
+console.log('5000 is the magic port');
