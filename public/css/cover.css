@@ -19,6 +19,9 @@ a:hover {
   border: 1px solid #fff;
 }
 
+.About -> h1{
+    margin-top: 20px;
+}
 
 /*
  * Base structure
@@ -30,7 +33,7 @@ body {
   background-color: #fff;
 }
 body {
-  color: #fff;
+  color: #131314;
   text-align: center;
   text-shadow: 0 1px 3px rgba(0,0,0,.5);
     background-color: white;
@@ -109,4 +112,22 @@ body {
 }
 .navbar{
     background-color: #162742
+}
+.about{
+    padding-top: 3rem;
+    background-color: #f7f7f7;
+}
+.about p{
+    text-align: justify;
+    margin-right: 3rem;
+    margin-top: 1rem;
+}
+#mision-image{
+    width: 18rem;
+    height: 13rem;
+    margin-top: 2rem;
+}
+#vision-image{
+    width: 18rem;
+    height: 13rem;
 }
