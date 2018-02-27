@@ -38,11 +38,11 @@ apiRouter.post('/auth', function(req, res){
     var superSecret = 'webDevUniandesSuperSecret';
     let user = req.body.login;
     let userInfo;
-    MongoClient.connect('mongodb://localhost:27017/users', function(err, client) {
+    MongoClient.connect('mongodb://user:user@ds249418.mlab.com:49418/dcapan', function(err, client) {
         if (err) {
             throw err;
         }
-        client.db('users').collection('users').find({login: user}).toArray(function(err, result) {
+        client.db('dcapan').collection('clientes').find({login: user}).toArray(function(err, result) {
             if (err) {
                 throw err;
             }
