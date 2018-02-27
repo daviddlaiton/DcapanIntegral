@@ -4,10 +4,17 @@ var path = require('path');
 var jwt = require('jsonwebtoken');
 var bodyParser = require('body-parser');
 var MongoClient = require('mongodb').MongoClient;
+var apiRouter = express.Router();
 //Configuration
 app.use(express.static(__dirname + '/public')); 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+
+//Api Router
+apiRouter.use(function(req, res, next){
+    next();
+});
+app.use('/api', apiRouter);
 
 app.get('/', function(req, res){
     res.sendFile(path.join((__dirname  + '/public')));
@@ -27,7 +34,7 @@ function connectToUsersDatabase(){
 
 //Authentication Stuff
 
-app.post('/auth', function(req, res){
+apiRouter.post('/auth', function(req, res){
     var superSecret = 'webDevUniandesSuperSecret';
     let user = req.body.login;
     let userInfo;
@@ -41,6 +48,7 @@ app.post('/auth', function(req, res){
             }
             userInfo = result[0];
             console.log(userInfo);
+            client.close();
             if(userInfo === undefined){
                 res.json({
                     success: false,
