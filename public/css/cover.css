@@ -2,10 +2,10 @@
  * Globals
  */
 
-/* Links */
-a,
-a:focus,
-a:hover {
+ /* Links */
+ a,
+ a:focus,
+ a:hover {
   color: white;
 }
 
@@ -20,15 +20,15 @@ a:hover {
 }
 
 .About -> h1{
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 /*
  * Base structure
  */
 
-html,
-body {
+ html,
+ body {
   height: 100%;
   background-color: #fff;
 }
@@ -36,7 +36,7 @@ body {
   color: #131314;
   text-align: center;
   text-shadow: 0 1px 3px rgba(0,0,0,.5);
-    background-color: white;
+  background-color: white;
 }
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */
@@ -68,7 +68,7 @@ body {
  * Cover
  */
 
-.cover {
+ .cover {
   padding: auto 0;
   margin-top: 54px;
   font-family: 'Quicksand', sans-serif;
@@ -83,7 +83,7 @@ body {
  * Affix and center
  */
 
-@media (min-width: 768px) {
+ @media (min-width: 768px) {
   /* Pull out the header and footer */
   .masthead {
     position: fixed;
@@ -99,35 +99,42 @@ body {
 }
 
 #login{
-    color: white;
-    margin-left: 25px;
-    margin-right: 25px;
-    cursor: pointer;
+  color: white;
+  margin-left: 25px;
+  margin-right: 25px;
+  cursor: pointer;
 }
 .fa-sign-in-alt{
-    color: white;
-    margin-left: 25px;
-    margin-right: 25px;
-    cursor: pointer;
+  color: white;
+  margin-left: 25px;
+  margin-right: 25px;
+  cursor: pointer;
 }
 .navbar{
-    background-color: #162742
+  background-color: #162742;
+  border:  auto 0;
+  padding:  auto 0;
+
 }
 .about{
-    padding-top: 3rem;
-    background-color: #f7f7f7;
+  padding-top: 3rem;
+  background-color: #f7f7f7;
 }
 .about p{
-    text-align: justify;
-    margin-right: 3rem;
-    margin-top: 1rem;
+  text-align: justify;
+  margin-right: 3rem;
+  margin-top: 1rem;
 }
 #mision-image{
-    width: 18rem;
-    height: 13rem;
-    margin-top: 2rem;
+  width: 18rem;
+  height: 13rem;
+  margin-top: 2rem;
 }
 #vision-image{
-    width: 18rem;
-    height: 13rem;
+  width: 18rem;
+  height: 13rem;
+}
+.container-fluid {
+  padding: auto 0;
+  margin: 0;
 }

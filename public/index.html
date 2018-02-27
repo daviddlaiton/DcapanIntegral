@@ -7,14 +7,15 @@
 	<!-- Required meta tags -->
 	<meta charset="utf-8">
 	<meta name="author" content="Andrés David Laiton, Juan Manuel Dominguez">
-  	<meta name="keywords" content="Dcapan, Dcapan Integral, Pan Integral, Granola">
-  	<meta name="description" content="Dcapan Integral web page">
+	<meta name="keywords" content="Dcapan, Dcapan Integral, Pan Integral, Granola">
+	<meta name="description" content="Dcapan Integral web page">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
 	<!-- Cover CSS -->
 	<link rel="stylesheet" href="css/cover.css" type="text/css">
+	<link rel="stylesheet" href="css/map.css" type="text/css">
 	<!-- Cover Font -->
 	<link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
 </head>
@@ -26,7 +27,7 @@
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-				<a class="navbar-brand" href="#">D'capan Integral</a>
+				<a class="navbar-brand" href="#index.html">D'capan Integral</a>
 				<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
 					<li class="nav-item active">
 						<a class="nav-link" href="#cover">Home <span class="sr-only">(current)</span></a>
@@ -38,7 +39,7 @@
 						<a class="nav-link" href="#">Información de Contacto</a>
 					</li>
 					<li>
-						<a class="nav-link" href="#">Distribuidores</a>
+						<a class="nav-link" href="#whereBuy">Dónde comprar</a>
 					</li>
 				</ul>
 				<form class="form-inline my-2 my-lg-0">
@@ -108,12 +109,29 @@
 				</div>
 			</div>
 		</div>
+		<!-- ./¿Quiénes somos?-->
+		<div class="espacios">
+			<br>
+			<br>
+		</div>
+		<!-- Dónde comprar -->
+		<div class="whereBuy" id="whereBuy">
+			<h3>Dónde comprar</h3>
+			<div id="map"></div>
+		</div>
+		<!-- Dónde comprar -->
 	</div>
 
 	<!-- jQuery first, then Tether, then Bootstrap JS. -->
 	<script src="//code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-	crossorigin="anonymous"></script>	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+	crossorigin="anonymous"></script>	
+	<script src="https://npmcdn.com/tether@1.2.4/dist/js/tether.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+	<!-- Google maps Script-->
+	<script src="js/map.js"></script>	
+	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAnjwDDiJxsWGpQxLn8_ZEJIRFTcRFTAoQ&callback=initMap"></script>
+	
 	<!-- Font Awesome Script -->
 	<script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
 	<!-- JS code for SmootScroll on links of the navbar-->
