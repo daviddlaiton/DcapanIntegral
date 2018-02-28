@@ -14,7 +14,7 @@ app.get('/', function(req, res){
 });
 
 function connectToUsersDatabase(){
-    MongoClient.connect('mongodb://localhost:27017/users'), (err, client) => {
+    MongoClient.connect('mongodb:mongodb://user:user@ds249418.mlab.com:55/dcapan'), (err, client) => {
         if(err){
             throw err;
         }
@@ -31,7 +31,7 @@ app.post('/auth', function(req, res){
     var superSecret = 'webDevUniandesSuperSecret';
     let user = req.body.login;
     let userInfo;
-    MongoClient.connect('mongodb://localhost:27017/users', function(err, client) {
+    MongoClient.connect('mongodb:mongodb://user:user@ds249418.mlab.com:55/dcapan', function(err, client) {
         if (err) {
             throw err;
         }
