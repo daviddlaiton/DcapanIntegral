@@ -5,35 +5,20 @@ var jwt = require('jsonwebtoken');
 var bodyParser = require('body-parser');
 var MongoClient = require('mongodb').MongoClient;
 var apiRouter = express.Router();
+var adminRouter = express.Router();
 //Configuration
 app.use(express.static(__dirname + '/public')); 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
-//Api Router
-apiRouter.use(function(req, res, next){
-    next();
-});
 app.use('/api', apiRouter);
+app.use('/admin', adminRouter);
 
 app.get('/', function(req, res){
     res.sendFile(path.join((__dirname  + '/public')));
 });
 
-function connectToUsersDatabase(){
-    MongoClient.connect('mongodb://localhost:27017/users'), (err, client) => {
-        if(err){
-            throw err;
-        }
-        else{
-            return 
-        }
-    }
-}
-
 
 //Authentication Stuff
-
 apiRouter.post('/auth', function(req, res){
     var superSecret = 'webDevUniandesSuperSecret';
     let user = req.body.login;
@@ -67,10 +52,11 @@ apiRouter.post('/auth', function(req, res){
                 else{
                     let token = jwt.sign({
                         name: userInfo.name,
-                        login: userInfo.login
+                        login: userInfo.login,
+                        admin: userInfo.admin
                     }, superSecret, {expiresIn: 60 * 30}
-                    );
-                    
+                                        );
+
                     res.json({
                         succes: true,
                         message: 'Authenticated',
@@ -81,6 +67,75 @@ apiRouter.post('/auth', function(req, res){
         });
     });
 
+});
+
+//Api Router
+//All api routes after this line will require authentication
+apiRouter.use(function(req, res, next){
+    let token = req.body.token || req.query.token || req.headers['x-access-token'];
+    let superSecret = 'webDevUniandesSuperSecret';
+
+    if(token){
+        jwt.verify(token, superSecret, function(err, decoded){
+            if(err){
+                return res.status(403).send({
+                    success: false,
+                    message: 'Invalid Token'
+                });
+            }
+            else{
+                req.decoded = decoded;
+                next();
+            }
+        });
+    }
+    else{
+        return res.status(403).send({
+            success: false,
+            message: 'No token Provided'
+        });
+    }
+});
+//Admin Router
+// All admin routes after this line will require authentication
+adminRouter.use(function(req, res, next){
+    let token = req.body.token || req.query.token || req.headers['x-access-token'];
+    let superSecret = 'webDevUniandesSuperSecret';
+
+    if(token){
+        jwt.verify(token, superSecret, function(err, decoded){
+            if(err){
+                return res.status(403).send({
+                    success: false,
+                    message: 'Invalid Token'
+                });
+            }
+            else{
+                if(decoded.admin === false){
+                    return res.status(403).send({
+                        success: false,
+                        message: 'Unauthorized'
+                    });
+                }
+                else{
+                    req.decoded = decoded;
+                    console.log(req.decoded);
+                    next();
+                }
+            }
+        });
+    }
+    else{
+        return res.status(403).send({
+            success: false,
+            message: 'No token Provided'
+        });
+    }
+});
+
+//Get all clients
+adminRouter.get('/clientes', function(req, res){
+    res.status(200).send({hola: "Hola"});
 });
 
 
