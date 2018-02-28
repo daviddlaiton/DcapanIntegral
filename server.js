@@ -17,31 +17,13 @@ app.get('/', function(req, res){
     res.sendFile(path.join((__dirname  + '/public')));
 });
 
-<<<<<<< HEAD
-function connectToUsersDatabase(){
-    MongoClient.connect('mongodb:mongodb://user:user@ds249418.mlab.com:55/dcapan'), (err, client) => {
-        if(err){
-            throw err;
-        }
-        else{
-            return 
-        }
-    }
-}
-
-=======
->>>>>>> 4c02e4c7dc9c239c17ab969cf5a565ad60c88f00
 
 //Authentication Stuff
 apiRouter.post('/auth', function(req, res){
     var superSecret = 'webDevUniandesSuperSecret';
     let user = req.body.login;
     let userInfo;
-<<<<<<< HEAD
-    MongoClient.connect('mongodb:mongodb://user:user@ds249418.mlab.com:55/dcapan', function(err, client) {
-=======
     MongoClient.connect('mongodb://user:user@ds249418.mlab.com:49418/dcapan', function(err, client) {
->>>>>>> 4c02e4c7dc9c239c17ab969cf5a565ad60c88f00
         if (err) {
             throw err;
         }
