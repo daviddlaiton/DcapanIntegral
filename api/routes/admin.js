@@ -3,6 +3,7 @@ const router = express.Router();
 const mongoose = require('mongoose');
 const Client = require('../models/clientModel.js');
 const jwt = require('jsonwebtoken');
+const Pedido = require('../models/pedidoModel.js');
 
 //Authorization
 router.use(function(req, res, next){
@@ -52,6 +53,15 @@ router.get('/clients', (req, res, next)=>{
     })
     .catch(err =>{
         console.log(err);
+    });
+});
+
+router.get('/pedidos', (req, res ,next) =>{
+    Pedido.find()
+    .exec()
+    .then(docs =>{
+        res.status(200).json(docs);
+
     });
 });
 
