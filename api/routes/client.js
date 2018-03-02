@@ -9,7 +9,6 @@ const Producto = require('../models/productoModel.js');
 router.use(function(req, res, next){
     let token = req.body.token || req.query.token || req.headers['x-access-token'];
     let superSecret = 'webDevUniandesSuperSecret';
-
     if(token){
         jwt.verify(token, superSecret, function(err, decoded){
             if(err){

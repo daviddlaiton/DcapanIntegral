@@ -17,7 +17,6 @@ mongoose.connect(config.database);
 
 
 app.use(express.static(__dirname + "/public"));
-app.use(morgan("dev"));
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -37,7 +36,6 @@ next();
 });
 
 
-app.use("/", )
 app.use("/clients", clientRoutes);
 app.use("/products", productRoutes);
 app.use("/auth", authRoutes);

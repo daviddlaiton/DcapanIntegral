@@ -5,7 +5,7 @@ const Client = require("../models/clientModel.js");
 const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
 
-const config = require("./config");
+const config = require("../../config");
 const superSecret = config.secret;
 
 router.post("/signIn", (req, res, next)=>{
