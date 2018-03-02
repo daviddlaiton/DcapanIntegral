@@ -1,12 +1,14 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const mongoose = require('mongoose');
-const Client = require('../models/clientModel.js');
-const bodyParser = require('body-parser');
-const jwt = require('jsonwebtoken');
-const superSecret = 'webDevUniandesSuperSecret';
+const mongoose = require("mongoose");
+const Client = require("../models/clientModel.js");
+const bodyParser = require("body-parser");
+const jwt = require("jsonwebtoken");
 
-router.post('/signIn', (req, res, next)=>{
+const config = require("./config");
+const superSecret = config.secret;
+
+router.post("/signIn", (req, res, next)=>{
     console.log(req);
     let client = new Client({
         _id: new mongoose.Types.ObjectId(),
@@ -23,7 +25,7 @@ router.post('/signIn', (req, res, next)=>{
    });
 });
 
-router.post('/login', (req, res, next) =>{
+router.post("/login", (req, res, next) =>{
     let plogin = req.body.login;
     let ppassword = req.body.password;
     Client.findOne({login: plogin})
@@ -32,14 +34,14 @@ router.post('/login', (req, res, next) =>{
         if(doc === undefined){
                 res.json({
                     success: false,
-                    message: 'Authentication failed, user not found'
+                    message: "Authentication failed, user not found"
                 });
             }
             else{
                 if(doc.password != ppassword){
                     res.json({
                         success: false,
-                        message: 'Authentication failed, wrong password'
+                        message: "Authentication failed, wrong password"
                     });
                 }
                 else{
@@ -52,7 +54,7 @@ router.post('/login', (req, res, next) =>{
 
                     res.json({
                         succes: true,
-                        message: 'Authenticated',
+                        message: "Authenticated",
                         token: token
                     });
                 }

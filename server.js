@@ -8,11 +8,10 @@ const clientRoutes = require("./api/routes/client.js")
 const productRoutes = require("./api/routes/product.js");
 const authRoutes = require("./api/routes/auth.js");
 const adminRoutes = require("./api/routes/admin.js")
-const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 //Environment var 
-var config = require("./config");
+const config = require("./config");
 
 mongoose.connect(config.database);
 
@@ -38,7 +37,7 @@ next();
 });
 
 
-
+app.use("/", )
 app.use("/clients", clientRoutes);
 app.use("/products", productRoutes);
 app.use("/auth", authRoutes);
