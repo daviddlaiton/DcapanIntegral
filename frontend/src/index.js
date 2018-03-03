@@ -12,34 +12,30 @@ class App extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            display: "Home"
+            display: "Login"
         }
-        this.handleLoginClick= this.handleLoginClick.bind(this);
-        this.handleHomeClick = this.handleHomeClick.bind(this);
-    }
-    handleLoginClick(){
-        this.setState({display: "login"});
-    }
-    handleHomeClick(){
-        this.setState({display:"Home"});
     }
     render(){
         if(this.state.display === "Home"){
             return(
                 <div>
-                    <NavbarDcapan onLoginClick = {this.handleLoginClick} onHomeClick = {this.handleHomeClick} />
+                    <NavbarDcapan />
                     <Cover />
                     <About />
                 </div>
             );
         }
-        if(this.state.display === "login"){
+        else if(this.state.display === "Login") {
             return(
                 <div>
-                    <NavbarDcapan onLoginClick = {this.handleLoginClick} onHomeClick = {this.handleHomeClick} />
-                    <Login />
+                    <NavbarDcapan />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <Login/>
                 </div>
-            );
+            )
         }
     }
 }
