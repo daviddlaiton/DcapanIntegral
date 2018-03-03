@@ -1,6 +1,6 @@
 import React from "react";
 import "../../css/login.css";
-import "../../css/cover.css"
+import "../../css/cover.css";
 
 export class Login extends React.Component {
     constructor(props) {
