@@ -17,7 +17,7 @@ const config = require("./config");
 mongoose.connect(config.database);
 
 
-app.use(express.static(path.join(__dirname, "frontend/build")));
+app.use(express.static(path.join(__dirname, "frontend/public")));
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
