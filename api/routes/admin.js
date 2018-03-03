@@ -46,10 +46,26 @@ router.use(function(req, res, next){
 //Get all clients
 router.get('/clients', (req, res, next)=>{
     Client.find()
+    .populate("pedidos")
     .exec()
     .then(docs => {
-        console.log(docs);
-        res.status(200).json(docs);
+        if(docs === undefined || docs === null){
+            res.status(404).json({
+                message: "Client not found"
+            });
+
+        }
+        else{
+            let options = {
+                path: 'pedidos.productos',
+                model: 'Producto'
+            }
+            mongoose.model('Client').populate(docs, options, (err, pop)=>{
+                res.status(200).send({
+                    pop
+                });
+            });
+        }
     })
     .catch(err =>{
         console.log(err);
@@ -58,6 +74,7 @@ router.get('/clients', (req, res, next)=>{
 
 router.get('/pedidos', (req, res ,next) =>{
     Pedido.find()
+    .populate('productos')
     .exec()
     .then(docs =>{
         res.status(200).json(docs);

@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const clientSchema = mongoose.Schema({
     _id : mongoose.Schema.Types.ObjectId,
@@ -10,4 +10,4 @@ const clientSchema = mongoose.Schema({
     pedidos: [{type: mongoose.Schema.ObjectId,ref: "Pedido", required: false}]
 });
 
-module.exports = mongoose.model('Client', clientSchema);
+module.exports = mongoose.model("Client", clientSchema);

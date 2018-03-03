@@ -39,7 +39,7 @@ router.get('/', (req, res, next) =>{
 
 router.post('/:clientId/pedidos', (req, res, next) =>{
     let pfecha = req.body.fecha;
-    let pProductos = req.body.pedidos;
+    let pProductos = req.body.productos;
     let productosFormateados = [];
     let p;
     pProductos.map((data) =>{
@@ -66,6 +66,60 @@ router.post('/:clientId/pedidos', (req, res, next) =>{
         });
     });
     
+
+});
+
+router.get("/:clientId", (req, res, next)=>{
+    let id = req.params.clientId;
+    Client.findOne({_id: id})
+    .populate("pedidos")
+    .exec()
+    .then(doc =>{
+        if(doc === undefined || doc === null){
+            res.status(404).json({
+                message: "Client not found"
+            });
+
+        }
+        else{
+            let options = {
+                path: 'pedidos.productos',
+                model: 'Producto'
+            }
+            mongoose.model('Client').populate(doc, options, (err, pop)=>{
+                res.status(200).send({
+                    pop
+                });
+            });
+        }
+
+    });
+});
+
+router.put("/:clientId", (req, res, next)=>{
+    let id = req.params.clientId;
+    let pname = req.body.name;
+    let ppassword = req.body.password;
+    let pcorreo = req.body.correo;
+
+    Client.findOneAndUpdate({_id: id}, {
+        name:pname,
+        password: ppassword,
+        correo: pcorreo
+
+    },{new: true})
+    .exec()
+    .then(doc =>{
+        if(doc === null || doc === undefined){
+            res.status(404).json({
+                message: "Not Found"
+            });
+        }
+
+        res.status(200).json({
+            doc
+        });
+    });
 
 });
 
