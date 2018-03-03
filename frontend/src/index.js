@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './css/index.css';
-import NavbarDcapan from './Components/NavbarDcapan';
+import NavbarDcapan from './Components/Home/NavbarDcapan';
 import registerServiceWorker from './registerServiceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
 
