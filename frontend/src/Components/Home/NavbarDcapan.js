@@ -31,7 +31,7 @@ class NavbarDcapan extends Component {
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <NavLink href="#home">Home</NavLink>
+              <NavLink onClick = {this.props.onHomeClick} style={{cursor:"pointer"}}>Home</NavLink>
             </NavItem>
             <NavItem>
               <NavLink href="#about" >¿Quiénes somos?</NavLink>
@@ -52,7 +52,7 @@ class NavbarDcapan extends Component {
               <NavLink ></NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="#" >Ingresar</NavLink>
+              <NavLink onClick = {this.props.onLoginClick} style={{cursor:"pointer"}}>Ingresar</NavLink>
             </NavItem>
             <NavItem>
               <NavLink href="#" >Registrate</NavLink>

@@ -118,6 +118,9 @@ Navbar{
   padding:  auto 0;
 
 }
+.navbar-brand{
+  margin: auto 0;
+}
 .about{
   padding-top: 3rem;
   background-color: #f7f7f7;

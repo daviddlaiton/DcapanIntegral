@@ -6,10 +6,7 @@ import registerServiceWorker from './registerServiceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
 import {Cover} from "./Components/Home/Cover";
 import {About} from "./Components/Home/About";
-//Smooth Scroll Imports
-import * as Scroll from 'react-scroll';
-import { Link, DirectLink, Element , Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
-
+import {Login} from "./Components/Login/Login";
 
 class App extends React.Component{
     constructor(props){
@@ -17,17 +14,33 @@ class App extends React.Component{
         this.state = {
             display: "Home"
         }
+        this.handleLoginClick= this.handleLoginClick.bind(this);
+        this.handleHomeClick = this.handleHomeClick.bind(this);
+    }
+    handleLoginClick(){
+        this.setState({display: "login"});
+    }
+    handleHomeClick(){
+        this.setState({display:"Home"});
     }
     render(){
         if(this.state.display === "Home"){
             return(
                 <div>
-                    <NavbarDcapan />
+                    <NavbarDcapan onLoginClick = {this.handleLoginClick} onHomeClick = {this.handleHomeClick} />
                     <Cover />
                     <About />
                 </div>
             );
-		}
+        }
+        if(this.state.display === "login"){
+            return(
+                <div>
+                    <NavbarDcapan onLoginClick = {this.handleLoginClick} onHomeClick = {this.handleHomeClick} />
+                    <Login />
+                </div>
+            );
+        }
     }
 }
 
