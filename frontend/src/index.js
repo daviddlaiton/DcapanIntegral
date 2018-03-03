@@ -6,6 +6,10 @@ import registerServiceWorker from './registerServiceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
 import {Cover} from "./Components/Home/Cover";
 import {About} from "./Components/Home/About";
+//Smooth Scroll Imports
+import * as Scroll from 'react-scroll';
+import { Link, DirectLink, Element , Events, animateScroll as scroll, scrollSpy, scroller } from 'react-scroll'
+
 
 class App extends React.Component{
     constructor(props){

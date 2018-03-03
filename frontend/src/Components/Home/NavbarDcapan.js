@@ -25,16 +25,16 @@ class NavbarDcapan extends Component {
   render() {
     return (
       <div>
-      <Navbar color="faded" dark expand="md">
+      <Navbar className="fixed-top" color="faded" dark expand="md">
         <NavbarBrand href="/">D'capan Integral</NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <NavLink href="/components/">Home</NavLink>
+              <NavLink href="#home">Home</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="#" >¿Quiénes somos?</NavLink>
+              <NavLink href="#about" >¿Quiénes somos?</NavLink>
             </NavItem>
             <NavItem>
               <NavLink href="#" >Información de contacto</NavLink>
