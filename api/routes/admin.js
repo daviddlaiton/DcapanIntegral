@@ -46,6 +46,8 @@ router.use(function(req, res, next){
 //Get all clients
 router.get('/clients', (req, res, next)=>{
     Client.find()
+    .populate("pedidos")
+    .populate("productos")
     .exec()
     .then(docs => {
         console.log(docs);

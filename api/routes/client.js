@@ -72,6 +72,7 @@ router.post('/:clientId/pedidos', (req, res, next) =>{
 router.get("/:clientId", (req, res, next)=>{
     let id = req.params.clientId;
     Client.findOne({_id: id})
+    .populate("pedidos")
     .exec()
     .then(doc =>{
         if(doc === undefined || doc === null){
@@ -81,8 +82,14 @@ router.get("/:clientId", (req, res, next)=>{
 
         }
         else{
-            res.status(200).json({
-                doc
+            let options = {
+                path: 'pedidos.productos',
+                model: 'Producto'
+            }
+            mongoose.model('Client').populate(doc, options, (err, pop)=>{
+                res.status(200).send({
+                    pop
+                });
             });
         }
 
