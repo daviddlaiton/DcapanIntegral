@@ -55,7 +55,9 @@ router.post("/login", (req, res, next) =>{
                     res.json({
                         succes: true,
                         message: "Authenticated",
-                        token: token
+                        token: token,
+                        id: doc._id,
+                        admin: doc.admin
                     });
                 }
             }

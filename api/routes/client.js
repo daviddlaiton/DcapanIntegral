@@ -39,7 +39,7 @@ router.get('/', (req, res, next) =>{
 
 router.post('/:clientId/pedidos', (req, res, next) =>{
     let pfecha = req.body.fecha;
-    let pProductos = req.body.pedidos;
+    let pProductos = req.body.productos;
     let productosFormateados = [];
     let p;
     pProductos.map((data) =>{

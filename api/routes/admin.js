@@ -58,6 +58,7 @@ router.get('/clients', (req, res, next)=>{
 
 router.get('/pedidos', (req, res ,next) =>{
     Pedido.find()
+    .populate('productos')
     .exec()
     .then(docs =>{
         res.status(200).json(docs);
