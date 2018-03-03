@@ -69,5 +69,52 @@ router.post('/:clientId/pedidos', (req, res, next) =>{
 
 });
 
+router.get("/:clientId", (req, res, next)=>{
+    let id = req.params.clientId;
+    Client.findOne({_id: id})
+    .exec()
+    .then(doc =>{
+        if(doc === undefined || doc === null){
+            res.status(404).json({
+                message: "Client not found"
+            });
+
+        }
+        else{
+            res.status(200).json({
+                doc
+            });
+        }
+
+    });
+});
+
+router.put("/:clientId", (req, res, next)=>{
+    let id = req.params.clientId;
+    let pname = req.body.name;
+    let ppassword = req.body.password;
+    let pcorreo = req.body.correo;
+
+    Client.findOneAndUpdate({_id: id}, {
+        name:pname,
+        password: ppassword,
+        correo: pcorreo
+
+    },{new: true})
+    .exec()
+    .then(doc =>{
+        if(doc === null || doc === undefined){
+            res.status(404).json({
+                message: "Not Found"
+            });
+        }
+
+        res.status(200).json({
+            doc
+        });
+    });
+
+});
+
 
 module.exports = router;
