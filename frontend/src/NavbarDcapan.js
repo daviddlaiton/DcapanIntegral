@@ -55,7 +55,7 @@ class NavbarDcapan extends Component {
               <NavLink href="#" >Ingresar</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="#" >Registrase</NavLink>
+              <NavLink href="#" >Registrate</NavLink>
             </NavItem>
           </Nav>
         </Collapse>
