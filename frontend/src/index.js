@@ -1,8 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './css/index.css';
-import App from './App';
+import NavbarDcapan from './NavbarDcapan';
 import registerServiceWorker from './registerServiceWorker';
+import 'bootstrap/dist/css/bootstrap.css';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<NavbarDcapan />, document.getElementById('root'));
 registerServiceWorker();

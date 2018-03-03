@@ -10,13 +10,14 @@ const authRoutes = require("./api/routes/auth.js");
 const adminRoutes = require("./api/routes/admin.js")
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
+const path = require("path");
 //Environment var 
 const config = require("./config");
 
 mongoose.connect(config.database);
 
 
-app.use(express.static(__dirname + "/public"));
+app.use(express.static(path.join(__dirname, "frontend/build")));
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -34,7 +35,6 @@ app.use((req, res, next) => {
 }
 next();
 });
-
 
 app.use("/clients", clientRoutes);
 app.use("/products", productRoutes);
