@@ -70,7 +70,6 @@ body {
 
  .cover {
   padding: auto 0;
-  margin-top: 54px;
   font-family: 'Quicksand', sans-serif;
   color: #6b433d;
 }
@@ -109,6 +108,9 @@ body {
   margin-left: 25px;
   margin-right: 25px;
   cursor: pointer;
+}
+Navbar{
+  padding: auto 0;
 }
 .navbar{
   background-color: #162742;

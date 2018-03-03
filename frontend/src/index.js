@@ -4,6 +4,8 @@ import './css/index.css';
 import NavbarDcapan from './Components/Home/NavbarDcapan';
 import registerServiceWorker from './registerServiceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
+import {Cover} from "./Components/Home/Cover";
+import {About} from "./Components/Home/About";
 
 class App extends React.Component{
     constructor(props){
@@ -15,7 +17,11 @@ class App extends React.Component{
     render(){
         if(this.state.display === "Home"){
             return(
-                <NavbarDcapan />
+                <div>
+                    <NavbarDcapan />
+                    <Cover />
+                    <About />
+                </div>
             );
 		}
     }
