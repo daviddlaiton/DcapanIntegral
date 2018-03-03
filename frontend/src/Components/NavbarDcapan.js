@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "./css/cover.css";
+import "../css/cover.css";
 import {Collapse,
   Navbar,
   NavbarToggler,
