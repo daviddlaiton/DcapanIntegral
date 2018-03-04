@@ -49,7 +49,7 @@ const columnsInfo = [{
 }];
 
 
-const products = [{
+var products = [{
     dateCreated: "",
     dateArrive: "No definida",
     orderDetail: ""
@@ -102,14 +102,36 @@ export class Client extends React.Component {
 
                 this.state.pedidos.map(function (x, i) {
                     if (i === 0) {
-                        products[i].dateCreated = x.fecha;
+                        products[0].dateCreated = x.fechaPedido;
+                        products[0].dateArrive = x.fechaEntrega;
+                        let pedidos = "";
+                        let precio = 0;
+                        x.productos.map(function(producto){
+                            
+                            pedidos += "Producto: " + producto.tipo + "\n" + " Cantidad: " + producto.cantidad + "\n \n"; 
+                            precio += producto.precio;
+                        });
+                        
+                        pedidos += "Valor del pedido: " + precio;
+                        products[0].orderDetail = pedidos;
                     }
                     else {
+                        console.log(x.productos);
                         let pedido = {
-                            dateCreated: x.fecha,
-                            dateArrive: "No definida",
-                            orderDetail: ""
+                            dateCreated: x.fechaPedido,
+                            dateArrive: x.fechaEntrega
                         }
+                        let pedidos = "";
+                        let precio = 0;
+                        x.productos.map(function(producto){
+                            
+                            pedidos += "Producto: " + producto.tipo + "\n"+  " Cantidad: " + producto.cantidad + "\n \n"; 
+                            precio += producto.precio;
+                        });
+                        
+                        pedidos += "Valor del pedido: " + precio;
+                        pedido.orderDetail = pedidos;
+                        
 
                         products.push(pedido);
                     };
@@ -141,8 +163,8 @@ export class Client extends React.Component {
                         <br />
                         <BootstrapTable keyField="id" data={info} columns={columnsInfo} />
                         <br />
-                        <button className="buttonEditInfo">
-                            Editar datos
+                        <button className="buttonNewOrder">
+                            Realizar pedido
                         </button>
                     </div>
                 </div >
