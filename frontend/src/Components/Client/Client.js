@@ -3,7 +3,7 @@ import "../../css/Client.css";
 import "../../css/NavbarClient.css";
 import BootstrapTable from '../../../node_modules/react-bootstrap-table-next';
 const columnsOrders = [{
-    dataField: "dataCreated",
+    dataField: "dateCreated",
     text: "Realizado en",
     headerStyle: {
         backgroundColor: "#28436d",
@@ -33,14 +33,14 @@ const columnsInfo = [{
         color: "white"
     }
 }, {
-    dataField: "mail",
+    dataField: "correo",
     text: "Correo",
     headerStyle: {
         color: "white",
         backgroundColor: '#28436d'
     }
 }, {
-    dataField: "user",
+    dataField: "login",
     text: "Usuario",
     headerStyle: {
         backgroundColor: '#28436d',
@@ -50,29 +50,81 @@ const columnsInfo = [{
 
 
 const products = [{
-    id: "",
-    dataCreated: "0",
-    dateArrive: "Hola",
-    orderDetail: "2 panes integrales y muchas cosas más. "
-}];
+    dateCreated: "",
+    dateArrive: "No definida",
+    orderDetail: ""
 
-const info = [{
-    id: "",
-    name: "Andrés Laiton",
-    mail: "ad.laiton10@uniandes.edu.co",
-    user: "ad.laiton10"
 }];
+var info = [{
+    name: "",
+    login: "",
+    correo: ""
+}]
+
+
 
 export class Client extends React.Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            token : localStorage.getItem("token")
+            token: localStorage.getItem("token"),
+            id: localStorage.getItem("id"),
+            info: "",
+            pedidos: "",
+            actualizado: "false",
+            pedidosActualizados: "false"
         }
     }
 
+    componentWillMount() {
+
+        fetch("/clients/" + this.state.id, {
+            method: "GET",
+            headers: {
+                "x-access-token": this.state.token
+            }
+        }).then(response => response.json())
+            .then(json => {
+                console.log(json);
+                console.log(json.pop.name);
+                this.setState({
+                    info: json.pop,
+                    pedidos: json.pop.pedidos
+                });
+
+                info[0].name = this.state.info.name;
+                info[0].login = this.state.info.login;
+                info[0].correo = this.state.info.correo;
+                this.setState({
+                    actualizado: "true"
+                });
+
+                this.state.pedidos.map(function (x, i) {
+                    if (i === 0) {
+                        products[i].dateCreated = x.fecha;
+                    }
+                    else {
+                        let pedido = {
+                            dateCreated: x.fecha,
+                            dateArrive: "No definida",
+                            orderDetail: ""
+                        }
+
+                        products.push(pedido);
+                    };
+
+                });
+
+                this.setState({
+                    pedidosActualizado: "true"
+                });
+            });
+    }
+
     render() {
+        console.log("despues del render")
+        console.log(info);
         return (
             <div className="container-fluid">
                 <div className="row">
@@ -96,5 +148,7 @@ export class Client extends React.Component {
                 </div >
             </div >
         );
+
     }
 }
+
