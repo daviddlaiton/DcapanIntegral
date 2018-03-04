@@ -35,7 +35,7 @@ export class Login extends React.Component {
 
                                 <label htmlFor="lname">Clave</label>
                                 <input type="text" id="lname" name="lastname" placeholder="Ingresa tu clave" />
-                                <input type="submit" value="Submit" />
+                                <input type="submit" value="Iniciar Sesión" />
                             </form>
                         </div>
                     </div>

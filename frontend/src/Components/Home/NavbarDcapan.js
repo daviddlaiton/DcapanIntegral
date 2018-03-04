@@ -55,7 +55,7 @@ class NavbarDcapan extends Component {
               <NavLink onClick = {this.props.onLoginClick} style={{cursor:"pointer"}}>Ingresar</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="#" >Registrate</NavLink>
+              <NavLink onClick = {this.props.onSignUpClick} style={{cursor:"pointer"}} >Registrate</NavLink>
             </NavItem>
           </Nav>
         </Collapse>
