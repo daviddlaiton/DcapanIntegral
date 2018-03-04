@@ -45,6 +45,7 @@ export class SignUp extends React.Component{
             console.log(response.statusText); //=> String
             console.log(response.headers);    //=> Headers
             console.log(response.url);        //=> String
+            console.log(response.json)
           
             return response.text()
           }, function(error) {

@@ -9,6 +9,7 @@ import {About} from "./Components/Home/About";
 import {Login} from "./Components/Login/Login";
 import {Client}from "./Components/Client/Client";
 import {NavbarClient} from "./Components/Client/NavbarClient";
+import {Admin} from "./Components/Administrator/Administrator";
 
 class App extends React.Component{
     constructor(props){
@@ -49,7 +50,7 @@ class App extends React.Component{
                 </div>
             );
         }
-        if(this.state.display === "Client")
+        if(this.state.display === "Client"){
             return(
                 <div>
                     <NavbarClient/>
@@ -60,6 +61,20 @@ class App extends React.Component{
                     <Client />
                 </div>
             );
+        }
+
+        if(this.state.display === "Admin"){
+            return(
+                <div>
+                    <NavbarClient />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <Admin />
+                </div>
+            );
+        }
     }
 }
 
