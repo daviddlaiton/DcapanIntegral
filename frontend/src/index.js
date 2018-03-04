@@ -7,12 +7,14 @@ import 'bootstrap/dist/css/bootstrap.css';
 import {Cover} from "./Components/Home/Cover";
 import {About} from "./Components/Home/About";
 import {Login} from "./Components/Login/Login";
+import {Client}from "./Components/Client/Client";
+import {NavbarClient} from "./Components/Client/NavbarClient";
 
 class App extends React.Component{
     constructor(props){
         super(props);
         this.state = {
-            display: "Home"
+            display: "Client"
         }
         this.handleLoginClick= this.handleLoginClick.bind(this);
         this.handleHomeClick = this.handleHomeClick.bind(this);
@@ -23,6 +25,8 @@ class App extends React.Component{
     handleHomeClick(){
         this.setState({display:"Home"});
     }
+
+    handleClient
     render(){
         if(this.state.display === "Home"){
             return(
@@ -45,6 +49,17 @@ class App extends React.Component{
                 </div>
             );
         }
+        if(this.state.display === "Client")
+            return(
+                <div>
+                    <NavbarClient/>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <Client />
+                </div>
+            );
     }
 }
 
