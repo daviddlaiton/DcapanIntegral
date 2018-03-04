@@ -69,21 +69,9 @@ const columnsInfo = [
 }];
 
 
-const products = [{
-    client: "Juan",
-    direction: "CAlle x avenida y",
-    id: "",
-    dataCreated: "0",
-    dateArrive: "Hola",
-    orderDetail: "2 panes integrales y muchas cosas más. "
-}];
+const products = [];
 
-const info = [{
-    id: "",
-    name: "Andrés Laiton",
-    mail: "ad.laiton10@uniandes.edu.co",
-    user: "ad.laiton10"
-}];
+const info = [];
 
 export class Admin extends React.Component {
     constructor(props){
@@ -106,15 +94,28 @@ export class Admin extends React.Component {
             console.log(json);
             console.log(json.pop);
             this.state.clients.map(pclient =>{
+                info.push({
+                    id: "1",
+                    name: pclient.name,
+                    mail: pclient.correo,
+                    user: pclient.login
+                });
                 console.log(pclient);
                 pclient.pedidos.map((pedido, i)=>{
+                    let productos = pedido.productos;
+                    let detalle = "";
+                    productos.map((p,i) =>{
+                        detalle += "Producto: " + i +"\n" + p.tipo + "\n" + " Cantidad: " + p.cantidad + "\n" + " Precio: " + p.precio + " ";
+                                        });
                     products.push({
                         client: pclient.name,
                         direction: pedido.direccion,
-                        id: "Pedido" + i,
+                        id: "Pedido: " + i,
                         dataCreated: pedido.fechaPedido,
-                        dateArrive: pedido.fechaEntrega
+                        dateArrive: pedido.fechaEntrega,
+                        orderDetail: detalle
                     });
+                    
                     this.setState({pedidosActualizados: "true"});
 
                 });
