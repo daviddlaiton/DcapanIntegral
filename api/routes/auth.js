@@ -18,6 +18,15 @@ router.post("/signIn", (req, res, next)=>{
         admin: false
         
     });
+    Client.find({login: req.body.login})
+    .exec()
+    .then(doc =>{
+        if(doc !== null || doc !== undefined){
+            res.status(500).json({
+                message: "Este nombre de usuario ya fue utilizado"
+            });
+        }
+    });
     client.save();
    res.status(200).json({
       message: "Thank You for signin in" 

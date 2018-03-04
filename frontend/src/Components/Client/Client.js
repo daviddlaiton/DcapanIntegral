@@ -68,7 +68,7 @@ export class Client extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            token : localStorage.get("token")
+            token : localStorage.getItem("token")
         }
     }
 
