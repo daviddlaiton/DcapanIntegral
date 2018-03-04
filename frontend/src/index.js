@@ -7,7 +7,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 import {Cover} from "./Components/Home/Cover";
 import {About} from "./Components/Home/About";
 import {Login} from "./Components/Login/Login";
-import {SignUp} from "./Components/SignUp/SignUp";
+import {Client}from "./Components/Client/Client";
+import {NavbarClient} from "./Components/Client/NavbarClient";
 
 class App extends React.Component{
     constructor(props){
@@ -17,24 +18,20 @@ class App extends React.Component{
         }
         this.handleLoginClick= this.handleLoginClick.bind(this);
         this.handleHomeClick = this.handleHomeClick.bind(this);
-        this.handleSignUpClick = this.handleSignUpClick.bind(this);
     }
-    
     handleLoginClick(){
         this.setState({display: "login"});
     }
     handleHomeClick(){
         this.setState({display:"Home"});
     }
-    handleSignUpClick(){
-        this.setState({display:"signup"});
-    }
+
+    handleClient
     render(){
-        let navbar = <NavbarDcapan onLoginClick = {this.handleLoginClick} onHomeClick = {this.handleHomeClick} onSignUpClick = {this.handleSignUpClick} />;
         if(this.state.display === "Home"){
             return(
                 <div>
-                   {navbar}
+                    <NavbarDcapan onLoginClick = {this.handleLoginClick} onHomeClick = {this.handleHomeClick} />
                     <Cover />
                     <About />
                 </div>
@@ -43,7 +40,7 @@ class App extends React.Component{
         if(this.state.display === "login"){
             return(
                 <div>
-                    {navbar}
+                    <NavbarDcapan onLoginClick = {this.handleLoginClick} onHomeClick = {this.handleHomeClick} />
                     <br />
                     <br />
                     <br />
@@ -52,18 +49,17 @@ class App extends React.Component{
                 </div>
             );
         }
-        if(this.state.display === "signup"){
+        if(this.state.display === "Client")
             return(
                 <div>
-                    {navbar}
+                    <NavbarClient/>
                     <br />
                     <br />
                     <br />
                     <br />
-                    <SignUp onSubmitClick = {this.handleLoginClick} />
+                    <Client />
                 </div>
             );
-        }
     }
 }
 
