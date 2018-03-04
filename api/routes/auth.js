@@ -30,15 +30,15 @@ router.post("/login", (req, res, next) =>{
     Client.findOne({login: plogin})
     .exec()
     .then(doc => {
-        if(doc === undefined){
-                res.json({
+        if(doc === undefined || doc === null){
+                res.status(401).json({
                     success: false,
                     message: "Authentication failed, user not found"
                 });
             }
             else{
                 if(doc.password != ppassword){
-                    res.json({
+                    res.status(401).json({
                         success: false,
                         message: "Authentication failed, wrong password"
                     });

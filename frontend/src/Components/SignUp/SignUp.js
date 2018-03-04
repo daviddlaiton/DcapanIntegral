@@ -44,14 +44,20 @@ export class SignUp extends React.Component{
             console.log(response.status);     //=> number 100–599
             console.log(response.statusText); //=> String
             console.log(response.headers);    //=> Headers
+<<<<<<< HEAD
             console.log(response.url);        //=> String
             console.log(response.json)
+=======
+            console.log(response.url);
+            alert('Registro Exitoso');        //=> String
+            callback();
+>>>>>>> 0874436870dbb24cd2ca6f4ddfff04c63ebc17a2
           
-            return response.text()
+            return response.text();
           }, function(error) {
             console.log(error.message); //=> String
           });
-        callback();
+       
     }
     render(){
         return (
