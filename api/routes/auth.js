@@ -9,7 +9,6 @@ const config = require("../../config");
 const superSecret = config.secret;
 
 router.post("/signIn", (req, res, next)=>{
-    console.log(req);
     let client = new Client({
         _id: new mongoose.Types.ObjectId(),
         name: req.body.name,
