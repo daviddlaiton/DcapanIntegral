@@ -2,9 +2,6 @@ import React from "react";
 import "../../css/Client.css";
 import "../../css/NavbarClient.css";
 import BootstrapTable from '../../../node_modules/react-bootstrap-table-next';
-import '../../../node_modules/react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
 const columnsOrders = [{
     dataField: "dataCreated",
     text: "Realizado en",
@@ -71,8 +68,7 @@ export class Client extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            token : localStorage.get("token"),
-            id : <Route path="/:id" component={Child} />
+            token : localStorage.get("token")
         }
     }
 
