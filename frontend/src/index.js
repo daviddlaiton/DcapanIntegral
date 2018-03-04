@@ -11,6 +11,7 @@ import {Client}from "./Components/Client/Client";
 import {SignUp} from "./Components/SignUp/SignUp";
 import {NavbarClient} from "./Components/Client/NavbarClient";
 import {Admin} from "./Components/Administrator/Administrator";
+import {Map} from "./Components/Home/Map";
 
 class App extends React.Component{
     constructor(props){
@@ -45,6 +46,7 @@ class App extends React.Component{
                     {navbar}
                     <Cover />
                     <About />
+                    <Map />
                 </div>
             );
         }
