@@ -25,6 +25,7 @@ class App extends React.Component{
         this.handleSignUpClick = this.handleSignUpClick.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
         this.handleAdmin = this.handleAdmin.bind(this);
+        this.handleSignOut = this.handleSignOut.bind(this);
     }
     handleLoginClick(){
         this.setState({display: "login"});
@@ -40,6 +41,9 @@ class App extends React.Component{
     }
     handleAdmin(){
         this.setState({display:"Admin"});
+    }
+    handleSignOut(){
+        this.setState({display:"Home"});
     }
     render(){
         let navbar = <NavbarDcapan onLoginClick = {this.handleLoginClick} onHomeClick = {this.handleHomeClick} onSignUpClick = {this.handleSignUpClick} />;
@@ -80,7 +84,7 @@ class App extends React.Component{
         if(this.state.display === "Client"){
             return(
                 <div>
-                    <NavbarClient/>
+                    <NavbarClient onSignOut={this.handleSignOut}/>
                     <br />
                     <br />
                     <br />
@@ -93,7 +97,7 @@ class App extends React.Component{
         if(this.state.display === "Admin"){
             return(
                 <div>
-                    <NavbarAdmin />
+                    <NavbarAdmin onSignOut={this.handleSignOut} />
                     <br />
                     <br />
                     <br />

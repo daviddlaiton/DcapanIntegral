@@ -31,7 +31,7 @@ export class NavbarClient extends Component {
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <NavLink href="#" >Cerrar sesión</NavLink>
+              <NavLink onClick={this.props.onSignOut} style={{cursor:"pointer"}} >Cerrar sesión</NavLink>
             </NavItem>
           </Nav>
         </Collapse>

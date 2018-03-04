@@ -71,7 +71,7 @@ export class Login extends React.Component {
                                 <input type="text" id="fname" name="firstname" placeholder="Ingresa tu usuario" onChange={this.handleLoginChange} />
 
                                 <label htmlFor="lname">Clave</label>
-                                <input type="text" id="lname" name="lastname" placeholder="Ingresa tu clave" onChange={this.handlePasswordChange}/>
+                                <input type="password" id="lname" name="lastname" placeholder="Ingresa tu clave" onChange={this.handlePasswordChange}/>
                                 <input type="submit" value="Iniciar Sesión" />
                             </form>
                         </div>
