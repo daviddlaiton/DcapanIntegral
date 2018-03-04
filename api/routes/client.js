@@ -40,15 +40,17 @@ router.get('/', (req, res, next) =>{
 
 router.post('/:clientId/pedidos', (req, res, next) =>{
     let pfechaEntrega = req.body.fechaEntrega;
-    let pfechaPedido = req.body.pfechaPedido;
+    let pfechaPedido = req.body.fechaPedido;
     let pProductos = req.body.productos;
+    let pDireccion = req.body.direccion;
     let productosFormateados = [];
     let p;
     pProductos.map((data) =>{
         p = new Producto({
             _id: new mongoose.Types.ObjectId(),
             tipo: data.tipo,
-            cantidad: data.cantidad
+            cantidad: data.cantidad,
+            precio: data.precio
         });
         productosFormateados.push(p);
         p.save();
@@ -58,7 +60,8 @@ router.post('/:clientId/pedidos', (req, res, next) =>{
         _id: new mongoose.Types.ObjectId(),
         fechaEntrega: pfechaEntrega,
         fechaPedido: pfechaPedido,
-        productos: productosFormateados
+        productos: productosFormateados,
+        direccion: pDireccion
     
     });
     ppedido.save();

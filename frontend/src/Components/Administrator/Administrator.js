@@ -4,7 +4,24 @@ import "../../css/NavbarClient.css";
 import BootstrapTable from '../../../node_modules/react-bootstrap-table-next';
 import '../../../node_modules/react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 
-const columnsOrders = [{
+const columnsOrders = [
+    {
+        dataField: "client",
+        text: "Realizado por",
+        headerStyle: {
+            backgroundColor: "#28436d",
+            color: "white"
+        }
+    },
+    {
+        dataField: "direction",
+        text: "Dirección de entrega",
+        headerStyle: {
+            backgroundColor: "#28436d",
+            color: "white"
+        }
+    },
+    {
     dataField: "dataCreated",
     text: "Realizado en",
     headerStyle: {
@@ -27,7 +44,8 @@ const columnsOrders = [{
     }
 }];
 
-const columnsInfo = [{
+const columnsInfo = [
+    {
     dataField: "name",
     text: "Nombre",
     headerStyle: {
@@ -52,6 +70,8 @@ const columnsInfo = [{
 
 
 const products = [{
+    client: "Juan",
+    direction: "CAlle x avenida y",
     id: "",
     dataCreated: "0",
     dateArrive: "Hola",
@@ -66,13 +86,50 @@ const info = [{
 }];
 
 export class Admin extends React.Component {
+    constructor(props){
+        super(props);
+        this.state = {
+            clients: [],
+            pedidosActualizados: "false",
+            token: localStorage.getItem("token")
+        };
+    }
+    componentWillMount(){
+        fetch("admin/clients", {
+            method: "GET",
+            headers: {
+                "x-access-token": this.state.token
+            }
+        }).then(response => response.json())
+        .then(json =>{
+            this.state.clients = json.pop;
+            console.log(json);
+            console.log(json.pop);
+            this.state.clients.map(pclient =>{
+                console.log(pclient);
+                pclient.pedidos.map((pedido, i)=>{
+                    products.push({
+                        client: pclient.name,
+                        direction: pedido.direccion,
+                        id: "Pedido" + i,
+                        dataCreated: pedido.fechaPedido,
+                        dateArrive: pedido.fechaEntrega
+                    });
+                    this.setState({pedidosActualizados: "true"});
+
+                });
+
+            });
+
+        });
+    }
     render() {
         return (
             <div className="container-fluid">
                 <div className="row">
                     <div className="col-md-1"></div>
                     <div className="col-sm-4">
-                        <h2>Pedidos realizados </h2>
+                        <h2>Pedidos Clientes </h2>
                         <br />
                         <BootstrapTable keyField="id" data={products} columns={columnsOrders} />
                         <br />

@@ -12,6 +12,7 @@ import {SignUp} from "./Components/SignUp/SignUp";
 import {NavbarClient} from "./Components/Client/NavbarClient";
 import {Admin} from "./Components/Administrator/Administrator";
 import {Map} from "./Components/Home/Map";
+import {NavbarAdmin} from "./Components/Administrator/NavbarAdmin";
 
 class App extends React.Component{
     constructor(props){
@@ -23,6 +24,7 @@ class App extends React.Component{
         this.handleHomeClick = this.handleHomeClick.bind(this);
         this.handleSignUpClick = this.handleSignUpClick.bind(this);
         this.handleLogin = this.handleLogin.bind(this);
+        this.handleAdmin = this.handleAdmin.bind(this);
     }
     handleLoginClick(){
         this.setState({display: "login"});
@@ -36,8 +38,9 @@ class App extends React.Component{
     handleLogin(){
         this.setState({display:"Client"});
     }
-
-    handleClient
+    handleAdmin(){
+        this.setState({display:"Admin"});
+    }
     render(){
         let navbar = <NavbarDcapan onLoginClick = {this.handleLoginClick} onHomeClick = {this.handleHomeClick} onSignUpClick = {this.handleSignUpClick} />;
         if(this.state.display === "Home"){
@@ -58,7 +61,7 @@ class App extends React.Component{
                     <br />
                     <br />
                     <br />
-                    <Login onLogin={this.handleLogin} />
+                    <Login onLogin={this.handleLogin} onAdmin={this.handleAdmin} />
                 </div>
             );
         }
@@ -90,7 +93,7 @@ class App extends React.Component{
         if(this.state.display === "Admin"){
             return(
                 <div>
-                    <NavbarClient />
+                    <NavbarAdmin />
                     <br />
                     <br />
                     <br />

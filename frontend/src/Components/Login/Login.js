@@ -43,7 +43,13 @@ export class Login extends React.Component {
                 localStorage.setItem("token", myToken);
                 localStorage.setItem("id", myId);
                 localStorage.setItem("admin", isAdmin);
+                if(isAdmin === false){
                 callback();
+                }
+                else{
+                    let adminCallback = this.props.onAdmin;
+                    adminCallback();
+                }
             }
             else{
                 alert(json.message);
