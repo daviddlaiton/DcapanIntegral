@@ -79,10 +79,27 @@ export class Admin extends React.Component {
         this.state = {
             clients: [],
             pedidosActualizados: "false",
-            token: localStorage.getItem("token")
+            token: localStorage.getItem("token"),
+            id: localStorage.getItem("id")
         };
     }
     componentWillMount(){
+        fetch("/clients/" + this.state.id, {
+            method: "GET",
+            headers: {
+                "x-access-token": this.state.token
+            }
+        }).then(response => response.json())
+        .then(json =>{
+            info.push({
+                id: "1",
+                name: json.pop.name,
+                mail: json.pop.correo,
+                user: json.pop.login
+
+            });
+
+        });
         fetch("admin/clients", {
             method: "GET",
             headers: {
@@ -94,12 +111,6 @@ export class Admin extends React.Component {
             console.log(json);
             console.log(json.pop);
             this.state.clients.map(pclient =>{
-                info.push({
-                    id: "1",
-                    name: pclient.name,
-                    mail: pclient.correo,
-                    user: pclient.login
-                });
                 console.log(pclient);
                 pclient.pedidos.map((pedido, i)=>{
                     let productos = pedido.productos;
