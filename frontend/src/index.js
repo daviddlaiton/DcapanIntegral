@@ -19,9 +19,23 @@ import {NavbarOrder} from "./Components/Client/NavbarOrder";
 class App extends React.Component{
     constructor(props){
         super(props);
-        this.state = {
-            display: "Home"
+        if(!localStorage.getItem("token")){
+            this.state = {
+                display: "Home"
+            }
+
         }
+        else if(localStorage.getItem("admin") === true){
+            this.state = {
+                display: "Admin"
+            }
+        }
+        else{
+            this.state = {
+                display: "Client"
+            }
+        }
+        
         this.handleLoginClick= this.handleLoginClick.bind(this);
         this.handleHomeClick = this.handleHomeClick.bind(this);
         this.handleSignUpClick = this.handleSignUpClick.bind(this);
@@ -54,6 +68,7 @@ class App extends React.Component{
     }
     handleSignOut(){
         this.setState({display:"Home"});
+        localStorage.clear();
     }
     render(){
         let navbar = <NavbarDcapan onLoginClick = {this.handleLoginClick} onHomeClick = {this.handleHomeClick} onSignUpClick = {this.handleSignUpClick} />;
