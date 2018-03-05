@@ -69,6 +69,7 @@ class App extends React.Component{
     handleSignOut(){
         this.setState({display:"Home"});
         localStorage.clear();
+        window.location.reload();
     }
     render(){
         let navbar = <NavbarDcapan onLoginClick = {this.handleLoginClick} onHomeClick = {this.handleHomeClick} onSignUpClick = {this.handleSignUpClick} />;
