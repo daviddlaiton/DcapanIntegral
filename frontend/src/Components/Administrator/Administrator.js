@@ -4,6 +4,9 @@ import "../../css/NavbarClient.css";
 import BootstrapTable from '../../../node_modules/react-bootstrap-table-next';
 import '../../../node_modules/react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 
+
+/* En vez de utilizar una constante con valores, se puede hacer un estado que decide acerca de los componentes visibles 
+además del uso de estilos para definir propiedades como el color de fuente y de fondo*/
 const columnsOrders = [
     {
         dataField: "client",
