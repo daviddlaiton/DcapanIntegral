@@ -26,14 +26,11 @@ router.post("/signIn", (req, res, next)=>{
                 message: "Este nombre de usuario ya fue utilizado"
             });
         }
-        else{
-            client.save();
-            res.status(200).json({
-            message: "Thank You for signin in" 
-   });
-        }
     });
-    
+    client.save();
+   res.status(200).json({
+      message: "Thank You for signin in" 
+   });
 });
 
 router.post("/login", (req, res, next) =>{
