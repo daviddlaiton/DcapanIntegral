@@ -4,6 +4,7 @@ import "../../css/NavbarClient.css";
 import BootstrapTable from '../../../node_modules/react-bootstrap-table-next';
 import '../../../node_modules/react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 
+//Se recomienda utilzar la documentación para los componentes
 const columnsOrders = [
     {
         dataField: "client",
