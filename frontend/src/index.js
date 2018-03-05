@@ -13,6 +13,8 @@ import {NavbarClient} from "./Components/Client/NavbarClient";
 import {Admin} from "./Components/Administrator/Administrator";
 import {Map} from "./Components/Home/Map";
 import {NavbarAdmin} from "./Components/Administrator/NavbarAdmin";
+import {NewOrder} from "./Components/Client/NewOrder";
+import {NavbarOrder} from "./Components/Client/NavbarOrder";
 
 class App extends React.Component{
     constructor(props){
@@ -26,6 +28,11 @@ class App extends React.Component{
         this.handleLogin = this.handleLogin.bind(this);
         this.handleAdmin = this.handleAdmin.bind(this);
         this.handleSignOut = this.handleSignOut.bind(this);
+        this.handleNewOrder = this.handleNewOrder.bind(this);
+        this.handleClient = this.handleClient.bind(this);
+    }
+    handleNewOrder(){
+        this.setState({display: "newOrder"});
     }
     handleLoginClick(){
         this.setState({display: "login"});
@@ -39,38 +46,14 @@ class App extends React.Component{
     handleLogin(){
         this.setState({display:"Client"});
     }
+    handleClient(){
+        this.setState({display:"Client"});
+    }
     handleAdmin(){
         this.setState({display:"Admin"});
     }
     handleSignOut(){
         this.setState({display:"Home"});
-        localStorage.clear();
-    }
-    componentDidMount(){
-        let token = localStorage.getItem("token");
-        if(token !== null || token !== undefined){
-            fetch("/clients/", {
-                method: "GET",
-                headers: {
-                    "x-access-token": token
-                }
-
-            } ).then(response =>{
-                if(response.status === 200){
-                    let admin = localStorage.getItem("admin");
-                    if(admin === true){
-                        this.setState({display: "Admin"});
-                    }
-                    else{
-                        this.setState({display: "Client"});
-                    }
-                }
-                else{
-                    localStorage.clear();
-                }
-
-            })
-        }
     }
     render(){
         let navbar = <NavbarDcapan onLoginClick = {this.handleLoginClick} onHomeClick = {this.handleHomeClick} onSignUpClick = {this.handleSignUpClick} />;
@@ -80,7 +63,6 @@ class App extends React.Component{
                     {navbar}
                     <Cover />
                     <About />
-                    <Map />
                 </div>
             );
         }
@@ -116,7 +98,7 @@ class App extends React.Component{
                     <br />
                     <br />
                     <br />
-                    <Client />
+                    <Client onNewOrder={this.handleNewOrder}/>
                 </div>
             );
         }
@@ -133,8 +115,21 @@ class App extends React.Component{
                 </div>
             );
         }
+        if(this.state.display === "newOrder"){
+            return(
+                <div>
+                    <NavbarOrder onClient={this.handleClient}/>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <NewOrder />
+                </div>
+            );
+        }
     }
 }
 
 ReactDOM.render(<App/>, document.getElementById('root'));
 registerServiceWorker();
+

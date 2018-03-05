@@ -26,7 +26,6 @@ export class Login extends React.Component {
     handleSubmit(event) {        
         event.preventDefault();
         let callback = this.props.onLogin;
-        console.log(JSON.stringify(this.state));
         fetch('/auth/login', {
             method: "POST",
             body: JSON.stringify(this.state),
