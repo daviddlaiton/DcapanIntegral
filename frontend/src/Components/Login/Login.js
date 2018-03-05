@@ -72,7 +72,7 @@ export class Login extends React.Component {
 
                                 <label htmlFor="lname">Clave</label>
                                 <input type="password" id="lname" name="lastname" placeholder="Ingresa tu clave" onChange={this.handlePasswordChange}/>
-                                <input type="submit" value="Iniciar Sesión" />
+                                <input type="submit" value="Iniciar Sesión" disabled = {this.state.password == 0 || this.state.login == 0 } />
                             </form>
                         </div>
                     </div>

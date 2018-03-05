@@ -44,6 +44,33 @@ class App extends React.Component{
     }
     handleSignOut(){
         this.setState({display:"Home"});
+        localStorage.clear();
+    }
+    componentDidMount(){
+        let token = localStorage.getItem("token");
+        if(token !== null || token !== undefined){
+            fetch("/clients/", {
+                method: "GET",
+                headers: {
+                    "x-access-token": token
+                }
+
+            } ).then(response =>{
+                if(response.status === 200){
+                    let admin = localStorage.getItem("admin");
+                    if(admin === true){
+                        this.setState({display: "Admin"});
+                    }
+                    else{
+                        this.setState({display: "Client"});
+                    }
+                }
+                else{
+                    localStorage.clear();
+                }
+
+            })
+        }
     }
     render(){
         let navbar = <NavbarDcapan onLoginClick = {this.handleLoginClick} onHomeClick = {this.handleHomeClick} onSignUpClick = {this.handleSignUpClick} />;

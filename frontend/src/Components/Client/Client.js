@@ -144,6 +144,73 @@ export class Client extends React.Component {
             });
     }
 
+    componentWillUpdate(){
+        fetch("/clients/" + this.state.id, {
+            method: "GET",
+            headers: {
+                "x-access-token": this.state.token
+            }
+        }).then(response => response.json())
+            .then(json => {
+                console.log(json);
+                console.log(json.pop.name);
+                this.setState({
+                    info: json.pop,
+                    pedidos: json.pop.pedidos
+                });
+
+                info[0].name = this.state.info.name;
+                info[0].login = this.state.info.login;
+                info[0].correo = this.state.info.correo;
+                this.setState({
+                    actualizado: "true"
+                });
+
+                this.state.pedidos.map(function (x, i) {
+                    if (i === 0) {
+                        products[0].dateCreated = x.fechaPedido;
+                        products[0].dateArrive = x.fechaEntrega;
+                        let pedidos = "";
+                        let precio = 0;
+                        x.productos.map(function(producto){
+                            
+                            pedidos += "Producto: " + producto.tipo + "\n" + " Cantidad: " + producto.cantidad + "\n \n"; 
+                            precio += producto.precio;
+                        });
+                        
+                        pedidos += "Valor del pedido: " + precio;
+                        products[0].orderDetail = pedidos;
+                    }
+                    else {
+                        console.log(x.productos);
+                        let pedido = {
+                            dateCreated: x.fechaPedido,
+                            dateArrive: x.fechaEntrega
+                        }
+                        let pedidos = "";
+                        let precio = 0;
+                        x.productos.map(function(producto){
+                            
+                            pedidos += "Producto: " + producto.tipo + "\n"+  " Cantidad: " + producto.cantidad + "\n \n"; 
+                            precio += producto.precio;
+                        });
+                        
+                        pedidos += "Valor del pedido: " + precio;
+                        pedido.orderDetail = pedidos;
+                        
+
+                        products.push(pedido);
+                    };
+
+                });
+
+                this.setState({
+                    pedidosActualizado: "true"
+                });
+            });
+
+    }
+
     render() {
         console.log("despues del render")
         console.log(info);

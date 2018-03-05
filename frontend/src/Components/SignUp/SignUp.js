@@ -2,7 +2,9 @@ import React from 'react';
 import "../../css/login.css";
 import "../../css/cover.css";
 
+
 export class SignUp extends React.Component{
+    
     constructor(props){
         super(props);
         this.state = {
@@ -31,6 +33,7 @@ export class SignUp extends React.Component{
         this.setState({correo: event.target.value});
       }
       
+      
     handleSubmit(e){
         e.preventDefault();
         let callback = this.props.onSubmitClick;
@@ -40,18 +43,15 @@ export class SignUp extends React.Component{
             headers: {
                 "Content-Type": "application/json"
               }
-        }).then(function(response) {
-            console.log(response.status);     //=> number 100–599
-            console.log(response.statusText); //=> String
-            console.log(response.headers);    //=> Headers
-            console.log(response.url);        //=> String
-            console.log(response.json)
-          
-            return response.text()
-          }, function(error) {
-            console.log(error.message); //=> String
-          });
-        callback();
+        }).then(response =>{
+            if(response.status === 200){
+                alert("Su usuario ha sido creado exitosamente");
+                callback();
+            }
+            else{
+                alert("El nombre de usuario ya existe");
+            }
+        })
     }
     render(){
         return (
@@ -69,12 +69,12 @@ export class SignUp extends React.Component{
                                 <input type="password" id="lname" name="lastname" placeholder="Ingresa tu clave" onChange={this.handlePasswordChange} />
 
                                 <label htmlFor="lname">Nombre</label>
-                                <input type="text" id="lname" name="lastname" placeholder="Ingresa tu Nombre" onChange={this.handleNameChange} />
+                                <input type="text" id="aname" name="lastname" placeholder="Ingresa tu Nombre" onChange={this.handleNameChange} />
 
                                 <label htmlFor="lname">correo</label>
-                                <input type="text" id="lname" name="lastname" placeholder="Ingresa tu correo" onChange={this.handleMailChange} />
+                                <input type="text" id="nname" name="lastname" placeholder="Ingresa tu correo" onChange={this.handleMailChange} />
 
-                                <input type="submit" value="Registrarse" />
+                                <input type="submit" value="Registrarse" disabled={this.state.password == 0 || this.state.login == 0 || this.state.name == 0 || this.state.correo == 0} />
                             </form>
                         </div>
                     </div>
