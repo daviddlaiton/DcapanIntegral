@@ -64,7 +64,7 @@ router.post("/login", (req, res, next) =>{
                         succes: true,
                         message: "Authenticated",
                         token: token,
-                        id: doc._id,
+                        id: doc.id,
                         admin: doc.admin
                     });
                 }

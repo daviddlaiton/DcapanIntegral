@@ -51,7 +51,7 @@ const columnsInfo = [{
 
 var products = [{
     dateCreated: "",
-    dateArrive: "No definida",
+    dateArrive: "",
     orderDetail: ""
 
 }];
