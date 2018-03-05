@@ -7,7 +7,7 @@ const jwt = require("jsonwebtoken");
 
 const config = require("../../config");
 const superSecret = config.secret;
-
+//Se recomienda comentar las funciones dentro de este archivo
 router.post("/signIn", (req, res, next)=>{
     let client = new Client({
         _id: new mongoose.Types.ObjectId(),
