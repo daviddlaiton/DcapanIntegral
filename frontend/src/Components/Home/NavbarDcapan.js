@@ -25,7 +25,7 @@ class NavbarDcapan extends Component {
   render() {
     return (
       <div>
-      <Navbar className="fixed-top" color="faded" dark expand="md">
+      <Navbar className="fixed-top" dark expand="md">
         <NavbarBrand href="/">D'capan Integral</NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
@@ -37,10 +37,10 @@ class NavbarDcapan extends Component {
               <NavLink href="#about" >¿Quiénes somos?</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="#" >Información de contacto</NavLink>
+              <NavLink href="#products" >Nuestros productos</NavLink>
             </NavItem>
             <NavItem>
-              <NavLink href="#" >Dónde comprar</NavLink>
+              <NavLink href="#contact" >Información de contacto</NavLink>
             </NavItem>
             <NavItem>
               <NavLink ></NavLink>

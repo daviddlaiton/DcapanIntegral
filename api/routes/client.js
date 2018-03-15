@@ -47,7 +47,7 @@ router.post('/:clientId/pedidos', (req, res, next) =>{
     let p;
     pProductos.map((data) =>{
         p = new Producto({
-            _id: new mongoose.Types.ObjectId(),
+            id: new mongoose.Types.ObjectId(),
             tipo: data.tipo,
             cantidad: data.cantidad,
             precio: data.precio

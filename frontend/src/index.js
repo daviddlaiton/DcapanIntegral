@@ -77,6 +77,8 @@ class App extends React.Component{
             return(
                 <div>
                     {navbar}
+                    <br/>
+                    <br/>
                     <Cover />
                     <About />
                 </div>
