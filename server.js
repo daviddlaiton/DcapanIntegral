@@ -1,4 +1,3 @@
-
 //Express import
 const express = require("express");
 const app = express();
@@ -17,7 +16,7 @@ const config = require("./config");
 mongoose.connect(config.database);
 
 
-app.use(express.static(path.join(__dirname, "_public")));
+app.use(express.static(path.join(__dirname, "frontend/build")));
 
 
 app.use(bodyParser.urlencoded({ extended: false }));
