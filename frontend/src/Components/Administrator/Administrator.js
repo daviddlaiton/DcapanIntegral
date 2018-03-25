@@ -4,6 +4,12 @@ import "../../css/NavbarClient.css";
 import BootstrapTable from '../../../node_modules/react-bootstrap-table-next';
 import '../../../node_modules/react-bootstrap-table-next/dist/react-bootstrap-table2.min.css';
 
+// By: Ramón Vega - No supe dónde más poner esto: Me parece adecuada la modularización utilizada y en general el proyecto
+// Está muy bien estructurado.
+
+// By: Ramón Vega - Los archivos construidos en react carecen de documentación. Es importante usarla para orientar al que lea
+// su código.
+
 const columnsOrders = [
     {
         dataField: "client",
